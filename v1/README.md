@@ -18,4 +18,4 @@
 ---
 
 > [!NOTE]
-> File di folder ini adalah arsip independen (self-contained). File [index.html](file:///d:/BELAJAR-HAL-BARUUU/ngulik-website/versions/v1/index.html) di folder ini dapat dibuka langsung di browser kapan saja untuk melihat rupa awal versi 1 tanpa terpengaruh perubahan di root folder.
+> File di folder ini adalah arsip independen (self-contained). File [index.html](file:///d:/BELAJAR-HAL-BARUUU/ngulik-website/v1/index.html) di folder ini dapat dibuka langsung di browser lokal atau melalui GitHub Pages di `https://azier001.github.io/general-trader-store/v1/` untuk melihat rupa awal versi 1 tanpa terpengaruh perubahan di root folder.

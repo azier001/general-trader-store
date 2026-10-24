@@ -232,6 +232,138 @@ select {
   pointer-events: none;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.version-dropdown {
+  position: relative;
+}
+
+.version-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(255, 87, 34, 0.08);
+  border: 1px solid rgba(255, 87, 34, 0.2);
+  border-radius: var(--radius-pill);
+  color: var(--primary-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.version-btn:hover {
+  background: rgba(255, 87, 34, 0.15);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.version-btn .version-chevron {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.version-dropdown.open .version-chevron {
+  transform: rotate(180deg);
+}
+
+.version-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 250px;
+  background: white;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 1000;
+  animation: fadeInDown 0.2s ease forwards;
+}
+
+.version-dropdown.open .version-menu {
+  display: flex;
+}
+
+.version-menu-header {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.version-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius-xs);
+  transition: var(--transition);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.version-item:hover {
+  background: var(--bg-main);
+}
+
+.version-item.active {
+  background: rgba(255, 87, 34, 0.08);
+}
+
+.version-item.active .version-item-title {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.version-item .version-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.version-item.active .version-indicator {
+  background: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.version-item-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.version-item-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .nav-wa-btn {
   display: flex;
   align-items: center;

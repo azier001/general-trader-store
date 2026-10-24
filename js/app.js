@@ -528,6 +528,25 @@ Mohon konfirmasi ketersediaan dan info ongkirnya ya. Terima kasih! 🙏`;
 
 // ─── Event Handlers ───
 function initEventHandlers() {
+  // Version dropdown toggle
+  const versionBtn = document.getElementById("version-btn");
+  const versionDropdown = document.querySelector(".version-dropdown");
+
+  if (versionBtn && versionDropdown) {
+    versionBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = versionDropdown.classList.toggle("open");
+      versionBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!versionDropdown.contains(e.target)) {
+        versionDropdown.classList.remove("open");
+        versionBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   // Category filter chips
   document.querySelectorAll(".filter-chip").forEach(chip => {
     chip.addEventListener("click", () => {
