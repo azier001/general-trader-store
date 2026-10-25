@@ -1834,3 +1834,50 @@ body.admin-active .admin-card-actions {
     font-size: 0.85rem;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   ADMIN LAUNCHER BUTTON (Hanya Muncul di Localhost)
+   ═══════════════════════════════════════════════ */
+.admin-launcher-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  background: #111827;
+  color: #F9FAFB;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 11px 18px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  z-index: 990;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.admin-launcher-btn i {
+  color: var(--shopee);
+  font-size: 0.95rem;
+  transition: transform 0.3s ease;
+}
+
+.admin-launcher-btn:hover {
+  background: #1F2937;
+  border-color: var(--shopee);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(238, 77, 45, 0.35);
+}
+
+.admin-launcher-btn:hover i {
+  transform: rotate(45deg);
+}
+
+/* Sembunyikan tombol saat panel admin sedang aktif terbuka */
+body.admin-active .admin-launcher-btn {
+  display: none !important;
+}
+

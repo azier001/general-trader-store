@@ -417,13 +417,22 @@
                    || protocol === 'file:';
 
       if (isLocal) {
+        // Tampilkan tombol launcher visual di mode lokal (agar tidak tergantung shortcut)
+        const launcher = document.createElement('button');
+        launcher.id = 'admin-launcher-btn';
+        launcher.className = 'admin-launcher-btn';
+        launcher.type = 'button';
+        launcher.innerHTML = '<i class="fa-solid fa-sliders"></i> <span>Kelola Produk (Admin)</span>';
+        launcher.title = 'Buka Panel Admin (Alt + A atau Ctrl + Shift + M)';
+        document.body.appendChild(launcher);
+
         const script = document.createElement('script');
         script.src = 'js/admin.js';
         document.body.appendChild(script);
       } else {
         // Sembunyikan elemen admin di production
         const adminEls = document.querySelectorAll(
-          '#admin-panel, #admin-overlay, #admin-form-overlay'
+          '#admin-panel, #admin-overlay, #admin-form-overlay, #admin-launcher-btn'
         );
         adminEls.forEach(el => el.remove());
       }

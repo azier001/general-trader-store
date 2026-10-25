@@ -314,13 +314,26 @@ function resetData() {
 
 // ─── Init Admin Event Listeners ───
 function initAdmin() {
-  // Keyboard shortcut: Ctrl + Shift + A
+  // Keyboard shortcut: Alt + A, Ctrl + Shift + M, atau Ctrl + Shift + A
   document.addEventListener("keydown", (e) => {
-    if (e.ctrlKey && e.shiftKey && e.key === "A") {
+    const key = e.key ? e.key.toLowerCase() : "";
+    const isAltA = e.altKey && key === "a";
+    const isCtrlShiftM = e.ctrlKey && e.shiftKey && key === "m";
+    const isCtrlShiftA = e.ctrlKey && e.shiftKey && key === "a";
+
+    if (isAltA || isCtrlShiftM || isCtrlShiftA) {
       e.preventDefault();
       toggleAdmin();
     }
   });
+
+  // Tombol launcher floating (jika ada di DOM)
+  const launcher = document.getElementById("admin-launcher-btn");
+  if (launcher) {
+    launcher.addEventListener("click", () => {
+      toggleAdmin();
+    });
+  }
 
   // Close admin panel
   document.getElementById("admin-close").addEventListener("click", closeAdmin);
@@ -370,4 +383,9 @@ function initAdmin() {
 
 
 // ─── Initialize ───
-document.addEventListener("DOMContentLoaded", initAdmin);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initAdmin);
+} else {
+  // Jika script dimuat dinamis setelah DOMContentLoaded
+  initAdmin();
+}
