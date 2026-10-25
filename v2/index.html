@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GENERAL TRADER — Katalog Promo Paket Hemat Shopee | Celana & Kaos Murah</title>
+  <meta name="description" content="Katalog promo paket hemat celana broadshort, celana training, kaos tani & pakaian anak dari toko Shopee General Trader. Beli langsung di Shopee, bisa COD & gratis ongkir!">
+  <meta name="keywords" content="celana pendek murah, broadshort, celana training, kaos tani, paket hemat shopee, general trader">
+  <meta property="og:title" content="GENERAL TRADER — Katalog Promo Paket Hemat Shopee">
+  <meta property="og:description" content="Beli celana & kaos paket hemat langsung dari Shopee. COD tersedia, gratis ongkir seluruh Indonesia!">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       ANNOUNCEMENT BAR
+       ═══════════════════════════════════════════════ -->
+  <div id="announcement-bar">
+    <div class="announce-content">
+      <span class="announce-pulse">
+        <i class="fa-solid fa-bolt announce-bolt"></i> PROMO FLASH SALE HARI INI:
+      </span>
+      <span>Bisa COD / Bayar di Tempat + Gratis Ongkir Seluruh Indonesia!</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <!-- Brand -->
+      <a href="#" class="nav-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">GENERAL <span class="accent">TRADER</span></span>
+          <span class="brand-tagline">Katalog Official Shopee</span>
+        </div>
+      </a>
+
+      <!-- Nav Right -->
+      <div class="nav-right">
+        <a href="#catalog" class="nav-cta">
+          <i class="fa-solid fa-fire"></i> Lihat Semua Promo
+        </a>
+
+        <!-- Version Switcher -->
+        <div class="version-dropdown">
+          <button class="version-btn" id="version-btn" type="button" aria-label="Pilih Versi" aria-expanded="false">
+            <span>🏷️ v2.0.0 (Snapshot)</span>
+            <span class="version-chevron">▾</span>
+          </button>
+          <div class="version-menu" id="version-menu">
+            <div class="version-menu-header">Pilih Versi Demo</div>
+            <a href="../" class="version-item">
+              <span class="version-indicator"></span>
+              <div>
+                <div class="version-item-title">Versi Terbaru (Main)</div>
+                <div class="version-item-desc">Kembali ke halaman utama aktif</div>
+              </div>
+            </a>
+            <a href="./" class="version-item active">
+              <span class="version-indicator"></span>
+              <div>
+                <div class="version-item-title">v2.0.0 — Katalog Shopee</div>
+                <div class="version-item-desc">Snapshot rilis V2 (arsip)</div>
+              </div>
+            </a>
+            <a href="../v1/" class="version-item">
+              <span class="version-indicator"></span>
+              <div>
+                <div class="version-item-title">v1.0.0 — WhatsApp Flow</div>
+                <div class="version-item-desc">Snapshot rilis awal (legacy)</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO BANNER
+       ═══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-star star"></i> SPESIAL PAKET BUNDLE MURAH
+        </div>
+
+        <h1 class="hero-title">
+          Beli Banyak <span class="gradient-text">Lebih Hemat!</span>
+          Pakaian & Celana Distro Murah
+        </h1>
+
+        <p class="hero-subtitle">
+          Dapatkan celana boxer, chino, broadshort, kaos tani hingga celana training
+          dengan harga grosir langsung dari toko resmi Shopee.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="search-input" placeholder="Cari promo contoh: Broadshort, Training, Kaos...">
+          <button class="search-btn" onclick="triggerSearch()">Cari</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       PRODUCT CATALOG
+       ═══════════════════════════════════════════════ -->
+  <section id="catalog">
+    <div class="container">
+      <!-- Header -->
+      <div class="catalog-header">
+        <h2 class="catalog-title">
+          <i class="fa-solid fa-layer-group"></i> Pilih Kategori Produk
+        </h2>
+        <span class="product-count" id="product-count">Menampilkan 10 Produk</span>
+      </div>
+
+      <!-- Filter Chips -->
+      <div class="filter-chips" id="filter-chips">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Product Grid -->
+      <div class="product-grid" id="product-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="empty-state" style="display: none;">
+        <i class="fa-solid fa-box-open"></i>
+        <h4>Produk Tidak Ditemukan</h4>
+        <p>Coba gunakan kata kunci lain seperti "broadshort", "joger", atau "kaos".</p>
+        <button class="btn-reset" onclick="resetSearch()">Lihat Semua Produk</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div>
+          <div class="footer-brand-logo">
+            <div class="footer-brand-icon">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <span class="footer-brand-name">GENERAL <span class="accent">TRADER</span></span>
+          </div>
+          <p class="footer-desc">
+            Pusat promo celana pendek, celana panjang, training, dan kaos tani termurah
+            langsung dari toko resmi Shopee. Nikmati promo paket isi banyak harga pabrik!
+          </p>
+        </div>
+
+        <!-- Keunggulan -->
+        <div>
+          <h4 class="footer-col-title">Keunggulan Belanja</h4>
+          <ul class="footer-list">
+            <li><i class="fa-solid fa-circle-check"></i> Pembayaran Aman Via Shopee / COD</li>
+            <li><i class="fa-solid fa-circle-check"></i> Pengiriman Cepat Seluruh Indonesia</li>
+            <li><i class="fa-solid fa-circle-check"></i> Bahan Katun & Lotto Halus Berkualitas</li>
+            <li><i class="fa-solid fa-circle-check"></i> Paket Promo Hemat Isi 2 - 7 Pcs</li>
+          </ul>
+        </div>
+
+        <!-- Metode Pembayaran -->
+        <div>
+          <h4 class="footer-col-title">Metode Pembayaran Resmi</h4>
+          <div class="payment-methods">
+            <span class="payment-badge">
+              <i class="fa-solid fa-truck shopee-icon"></i> COD (Bayar di Tempat)
+            </span>
+            <span class="payment-badge">
+              <i class="fa-solid fa-wallet wallet-icon"></i> ShopeePay
+            </span>
+            <span class="payment-badge">
+              <i class="fa-solid fa-building-columns bank-icon"></i> Transfer Bank
+            </span>
+            <span class="payment-badge">
+              <i class="fa-solid fa-store store-icon"></i> Indomaret / Alfamart
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2026 General Trader. All rights reserved. | Powered with ❤️
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       SCROLL TO TOP
+       ═══════════════════════════════════════════════ -->
+  <button id="scroll-top-btn" aria-label="Scroll ke atas">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- ═══════════════════════════════════════════════
+       ADMIN PANEL (Sidebar Kanan)
+       ═══════════════════════════════════════════════ -->
+  <div class="admin-overlay" id="admin-overlay"></div>
+
+  <aside class="admin-panel" id="admin-panel">
+    <div class="admin-header">
+      <h3><i class="fa-solid fa-gear"></i> Admin Manager</h3>
+      <button class="admin-close" id="admin-close" aria-label="Tutup Admin">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="admin-add-section">
+      <button class="btn-admin-add" id="btn-add-product">
+        <i class="fa-solid fa-plus"></i> Tambah Produk Baru
+      </button>
+    </div>
+
+    <div class="admin-product-list" id="admin-product-list">
+      <!-- Rendered by admin.js -->
+    </div>
+
+    <div class="admin-footer">
+      <div class="admin-status" id="admin-status">Tidak ada perubahan</div>
+      <div class="admin-footer-btns">
+        <button class="btn-export" id="btn-export">
+          <i class="fa-solid fa-clipboard"></i> Export Data
+        </button>
+        <button class="btn-reset-data" id="btn-reset-data">
+          <i class="fa-solid fa-rotate-left"></i> Reset Default
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       ADMIN FORM MODAL (Add / Edit Product)
+       ═══════════════════════════════════════════════ -->
+  <div class="admin-form-overlay" id="admin-form-overlay">
+    <div class="admin-form-modal">
+      <div class="admin-form-header">
+        <h4 id="form-modal-title">Tambah Produk Baru</h4>
+        <button class="admin-close" id="form-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="product-form">
+        <div class="admin-form-body">
+          <div class="form-group">
+            <label for="f-title">Judul Produk <span class="req">*</span></label>
+            <input type="text" id="f-title" placeholder="Contoh: 40 Ribu Dapat 3 Pcs Broadshort..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-category">Kategori <span class="req">*</span></label>
+            <select id="f-category" required>
+              <option value="">— Pilih Kategori —</option>
+              <option value="pendek">🩳 Celana Pendek</option>
+              <option value="panjang">🏃 Celana Panjang & Training</option>
+              <option value="kaos">👕 Kaos Tani / Petani</option>
+              <option value="anak">👶 Pakaian Anak</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="f-price">Harga (teks) <span class="req">*</span></label>
+            <input type="text" id="f-price" placeholder="Contoh: Rp 40.000 atau Rp 12.500 - Rp 35.000" required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-badge">Badge Promo <span class="req">*</span></label>
+            <input type="text" id="f-badge" placeholder="Contoh: 3 PCS HANYA 40RB" required>
+            <p class="hint">Teks singkat yang muncul di overlay gambar</p>
+          </div>
+
+          <div class="form-group">
+            <label for="f-packageInfo">Info Isi Paket <span class="req">*</span></label>
+            <input type="text" id="f-packageInfo" placeholder="Contoh: Isi Paket: 3 Pcs Celana Broadshort Katun" required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-rating">Rating (1 - 5)</label>
+            <input type="number" id="f-rating" min="1" max="5" step="0.1" value="4.8">
+          </div>
+
+          <div class="form-group">
+            <label for="f-sold">Jumlah Terjual</label>
+            <input type="text" id="f-sold" placeholder="Contoh: 10rb+ Terjual">
+          </div>
+
+          <div class="form-group">
+            <label for="f-imageUrl">URL Gambar Shopee <span class="req">*</span></label>
+            <input type="text" id="f-imageUrl" placeholder="https://down-id.img.susercontent.com/file/..." required>
+            <p class="hint">Salin dari halaman produk Shopee (klik kanan gambar → Copy Image Address)</p>
+          </div>
+
+          <div class="form-group">
+            <label for="f-url">URL Link Produk Shopee <span class="req">*</span></label>
+            <input type="text" id="f-url" placeholder="https://shopee.co.id/..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-videoUrl">URL Video Review (Opsional)</label>
+            <input type="text" id="f-videoUrl" placeholder="https://down-tx-id.vod.susercontent.com/...mp4">
+            <p class="hint">Salin dari Shopee: klik kanan video → Copy Video Address. Kosongkan jika tidak ada video.</p>
+          </div>
+        </div>
+
+        <div class="admin-form-footer">
+          <button type="button" class="btn-form-cancel" id="form-cancel">Batal</button>
+          <button type="submit" class="btn-form-save" id="form-save">
+            <i class="fa-solid fa-check"></i> Simpan Produk
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       VIDEO REVIEW MODAL
+       ═══════════════════════════════════════════════ -->
+  <div class="video-modal-overlay" id="video-modal-overlay">
+    <div class="video-modal">
+      <!-- Close Button -->
+      <button class="video-modal-close" id="video-modal-close" aria-label="Tutup Video">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="video-modal-body">
+        <!-- Video Player (Left/Top) -->
+        <div class="video-modal-player">
+          <video id="video-player"
+                 controls
+                 playsinline
+                 webkit-playsinline
+                 preload="metadata"
+                 muted>
+            <source id="video-source" src="" type="video/mp4">
+            Browser Anda tidak mendukung pemutar video.
+          </video>
+        </div>
+
+        <!-- Product Info (Right/Bottom) -->
+        <div class="video-modal-info">
+          <div class="video-modal-meta">
+            <span class="video-modal-badge" id="video-modal-badge"></span>
+          </div>
+
+          <h3 class="video-modal-title" id="video-modal-title"></h3>
+
+          <div class="video-modal-rating">
+            <i class="fa-solid fa-star"></i>
+            <span id="video-modal-rating"></span>
+            <span class="video-modal-sold" id="video-modal-sold"></span>
+          </div>
+
+          <div class="video-modal-package" id="video-modal-package"></div>
+
+          <div class="video-modal-price">
+            <span class="video-price-label">Harga Promo Paket:</span>
+            <span class="video-price-value" id="video-modal-price"></span>
+          </div>
+
+          <a href="#" target="_blank" rel="noopener noreferrer" class="video-modal-cta" id="video-modal-cta">
+            <i class="fa-solid fa-bag-shopping"></i> Beli Langsung di Shopee
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       TOAST NOTIFICATION
+       ═══════════════════════════════════════════════ -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS (Order matters: data → logic → admin)
+       ═══════════════════════════════════════════════ -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Admin Manager: HANYA dimuat di localhost / file:// (Environment Lock) -->
+  <script>
+    (function() {
+      const host = window.location.hostname;
+      const protocol = window.location.protocol;
+      const isLocal = host === 'localhost'
+                   || host === '127.0.0.1'
+                   || host === ''
+                   || protocol === 'file:';
+
+      if (isLocal) {
+        const script = document.createElement('script');
+        script.src = 'js/admin.js';
+        document.body.appendChild(script);
+      } else {
+        // Sembunyikan elemen admin di production
+        const adminEls = document.querySelectorAll(
+          '#admin-panel, #admin-overlay, #admin-form-overlay'
+        );
+        adminEls.forEach(el => el.remove());
+      }
+    })();
+  </script>
+
+</body>
+</html>

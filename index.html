@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GENERAL TRADER — Paket Hemat Celana Boardshort & Kaos Kerja | Harga Grosir</title>
-  <meta name="description" content="Belanja Celana Boardshort & Kaos Kerja Paket Hemat mulai Rp30.000-an. Star Seller 8 tahun, 16rb+ pelanggan puas. Gratis ongkir & COD tersedia. Order langsung via WhatsApp!">
-  <meta name="keywords" content="celana pendek pria, boardshort murah, kaos kerja, celana distro, paket hemat celana, general trader shopee">
-  <meta property="og:title" content="GENERAL TRADER — Paket Hemat Celana Boardshort Mulai Rp30rb-an">
-  <meta property="og:description" content="Belanja paket celana boardshort & kaos kerja harga grosir. Star Seller 8 tahun, 16rb+ pelanggan puas.">
+  <title>GENERAL TRADER — Katalog Promo Paket Hemat Shopee | Celana & Kaos Murah</title>
+  <meta name="description" content="Katalog promo paket hemat celana broadshort, celana training, kaos tani & pakaian anak dari toko Shopee General Trader. Beli langsung di Shopee, bisa COD & gratis ongkir!">
+  <meta name="keywords" content="celana pendek murah, broadshort, celana training, kaos tani, paket hemat shopee, general trader">
+  <meta property="og:title" content="GENERAL TRADER — Katalog Promo Paket Hemat Shopee">
+  <meta property="og:description" content="Beli celana & kaos paket hemat langsung dari Shopee. COD tersedia, gratis ongkir seluruh Indonesia!">
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🩳</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛍️</text></svg>">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -28,10 +31,11 @@
        ═══════════════════════════════════════════════ -->
   <div id="announcement-bar">
     <div class="announce-content">
-      🔥 FLASH SALE Paket Boardshort 3 Pcs mulai <strong>Rp30.000-an!</strong> &nbsp;Berakhir dalam
-      <span class="countdown" id="countdown-timer">23:59:59</span>
+      <span class="announce-pulse">
+        <i class="fa-solid fa-bolt announce-bolt"></i> PROMO FLASH SALE HARI INI:
+      </span>
+      <span>Bisa COD / Bayar di Tempat + Gratis Ongkir Seluruh Indonesia!</span>
     </div>
-    <button id="announcement-close" aria-label="Tutup">✕</button>
   </div>
 
   <!-- ═══════════════════════════════════════════════
@@ -39,24 +43,27 @@
        ═══════════════════════════════════════════════ -->
   <nav id="navbar">
     <div class="nav-container">
+      <!-- Brand -->
       <a href="#" class="nav-brand">
-        <div class="brand-icon">GT</div>
-        GENERAL TRADER
+        <div class="brand-icon">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">GENERAL <span class="accent">TRADER</span></span>
+          <span class="brand-tagline">Katalog Official Shopee</span>
+        </div>
       </a>
 
-      <div class="nav-search">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="text" id="search-input" placeholder="Cari produk... (celana, kaos, paket 3pcs)">
-      </div>
-
+      <!-- Nav Right -->
       <div class="nav-right">
+        <a href="#catalog" class="nav-cta">
+          <i class="fa-solid fa-fire"></i> Lihat Semua Promo
+        </a>
+
         <!-- Version Switcher -->
         <div class="version-dropdown">
           <button class="version-btn" id="version-btn" type="button" aria-label="Pilih Versi" aria-expanded="false">
-            <span class="version-tag">🏷️ v1.0.0 (Latest)</span>
+            <span>🏷️ v2.0.0</span>
             <span class="version-chevron">▾</span>
           </button>
           <div class="version-menu" id="version-menu">
@@ -64,108 +71,55 @@
             <a href="./" class="version-item active">
               <span class="version-indicator"></span>
               <div>
-                <div class="version-item-title">Versi Terbaru (Main)</div>
-                <div class="version-item-desc">Versi aktif terkini</div>
+                <div class="version-item-title">v2.0.0 — Katalog Shopee</div>
+                <div class="version-item-desc">Versi aktif saat ini (Main)</div>
+              </div>
+            </a>
+            <a href="./v2/" class="version-item">
+              <span class="version-indicator"></span>
+              <div>
+                <div class="version-item-title">v2.0.0 — Snapshot Arsip</div>
+                <div class="version-item-desc">Snapshot rilis V2 (arsip)</div>
               </div>
             </a>
             <a href="./v1/" class="version-item">
               <span class="version-indicator"></span>
               <div>
-                <div class="version-item-title">Versi 1.0.0 (Baseline)</div>
-                <div class="version-item-desc">Snapshot rilis awal</div>
+                <div class="version-item-title">v1.0.0 — WhatsApp Flow</div>
+                <div class="version-item-desc">Snapshot rilis awal (legacy)</div>
               </div>
             </a>
           </div>
         </div>
-
-        <a href="https://wa.me/6281215934380?text=Halo%20Admin%20General%20Trader!%20Saya%20mau%20tanya%20produk..." target="_blank" class="nav-wa-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.28-1.232l-.3-.178-3.108.923.923-3.108-.178-.3A8 8 0 1112 20z"/>
-          </svg>
-          <span>Chat Admin</span>
-        </a>
       </div>
     </div>
   </nav>
 
   <!-- ═══════════════════════════════════════════════
-       HERO SECTION
+       HERO BANNER
        ═══════════════════════════════════════════════ -->
   <section id="hero">
-    <div class="hero-container">
+    <div class="container">
       <div class="hero-content">
         <div class="hero-badge">
-          <span class="pulse-dot"></span>
-          ⭐ Star Seller Shopee &bull; 8 Tahun Berpengalaman
+          <i class="fa-solid fa-star star"></i> SPESIAL PAKET BUNDLE MURAH
         </div>
 
         <h1 class="hero-title">
-          Paket Hemat<br>
-          <span class="highlight">Celana Boardshort</span><br>
-          3 Pcs Mulai 30rb-an!
+          Beli Banyak <span class="gradient-text">Lebih Hemat!</span>
+          Pakaian & Celana Distro Murah
         </h1>
 
         <p class="hero-subtitle">
-          Bahan katun adem, pinggang karet elastis, warna stylish. 
-          Dipercaya <strong>16.000+</strong> pelanggan dengan rating <strong>4.5⭐</strong> di Shopee. 
-          Pesan langsung via WhatsApp — proses cepat!
+          Dapatkan celana boxer, chino, broadshort, kaos tani hingga celana training
+          dengan harga grosir langsung dari toko resmi Shopee.
         </p>
 
-        <div class="hero-price-tag">
-          Rp30.951 <small>/ 3 pcs</small>
-        </div>
-
-        <div class="hero-ctas">
-          <a href="#catalog" class="btn-hero-primary">
-            🛍️ Lihat Semua Produk
-          </a>
-          <a href="https://wa.me/6281215934380?text=Halo%20Admin!%20Saya%20tertarik%20dengan%20paket%20celana%20boardshort.%20Bisa%20info%20lebih%20lengkap?" target="_blank" class="btn-hero-secondary">
-            💬 Tanya Admin
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-image">
-        <img src="assets/img/hero-bg.jpg" alt="Paket 3 Pcs Celana Boardshort General Trader" width="600" height="338">
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       TRUST BAR
-       ═══════════════════════════════════════════════ -->
-  <section id="trust-bar">
-    <div class="trust-container">
-      <div class="trust-item">
-        <div class="trust-icon">⭐</div>
-        <div class="trust-label">
-          <strong>Star Seller</strong>
-          Toko Terpercaya Shopee
-        </div>
-      </div>
-
-      <div class="trust-item">
-        <div class="trust-icon">🕐</div>
-        <div class="trust-label">
-          <strong>8 Tahun</strong>
-          Berpengalaman Jualan
-        </div>
-      </div>
-
-      <div class="trust-item">
-        <div class="trust-icon">👥</div>
-        <div class="trust-label">
-          <strong>16.100+ Followers</strong>
-          Pelanggan Setia
-        </div>
-      </div>
-
-      <div class="trust-item">
-        <div class="trust-icon">📦</div>
-        <div class="trust-label">
-          <strong>175 Produk</strong>
-          Rating 4.5 / 5.0
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="search-input" placeholder="Cari promo contoh: Broadshort, Training, Kaos...">
+          <button class="search-btn" onclick="triggerSearch()">Cari</button>
         </div>
       </div>
     </div>
@@ -175,139 +129,31 @@
        PRODUCT CATALOG
        ═══════════════════════════════════════════════ -->
   <section id="catalog">
-    <div class="section-header animate-on-scroll">
-      <h2>🛒 Katalog Produk</h2>
-      <p>Pilih produk favoritmu & langsung checkout via WhatsApp</p>
-    </div>
-
-    <!-- Filter Bar -->
-    <div id="filter-bar">
-      <div class="filter-chips">
-        <button class="filter-chip active" data-filter="semua">🏷️ Semua</button>
-        <button class="filter-chip" data-filter="celana-pendek">🩳 Celana Boardshort</button>
-        <button class="filter-chip" data-filter="kaos-kerja">👕 Kaos Basahan Kerja</button>
-        <button class="filter-chip" data-filter="terlaris">🔥 Terlaris</button>
+    <div class="container">
+      <!-- Header -->
+      <div class="catalog-header">
+        <h2 class="catalog-title">
+          <i class="fa-solid fa-layer-group"></i> Pilih Kategori Produk
+        </h2>
+        <span class="product-count" id="product-count">Menampilkan 10 Produk</span>
       </div>
 
-      <div class="filter-right">
-        <span id="result-count">18 produk ditemukan</span>
-        <select id="sort-select">
-          <option value="populer">Urutkan: Populer</option>
-          <option value="termurah">Harga: Termurah</option>
-          <option value="termahal">Harga: Termahal</option>
-          <option value="terlaris">Paling Laris</option>
-          <option value="rating">Rating Tertinggi</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Product Grid (rendered by JS) -->
-    <div id="product-grid"></div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════
-       TESTIMONIALS
-       ═══════════════════════════════════════════════ -->
-  <section id="testimonials">
-    <div class="testimonial-container">
-      <div class="section-header animate-on-scroll">
-        <h2>💬 Apa Kata Pembeli</h2>
-        <p>Ulasan asli dari pelanggan setia General Trader</p>
+      <!-- Filter Chips -->
+      <div class="filter-chips" id="filter-chips">
+        <!-- Rendered by JS -->
       </div>
 
-      <div class="testimonial-grid">
-        <div class="testimonial-card animate-on-scroll">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">A</div>
-            <div>
-              <div class="testimonial-name">Ahmad R.</div>
-              <div class="testimonial-rating">★★★★★</div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Bahannya adem banget, harga 40rb dapet 3 pcs itu murah banget! Pengiriman juga cepat. Udah repeat order 3x 👍"</p>
-        </div>
-
-        <div class="testimonial-card animate-on-scroll">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">D</div>
-            <div>
-              <div class="testimonial-name">Dian S.</div>
-              <div class="testimonial-rating">★★★★★</div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Kaos kerjanya mantap buat di kebun. Lengan panjang, ada kupluknya. Beli buat suami, dia suka banget. Bakal order lagi!"</p>
-        </div>
-
-        <div class="testimonial-card animate-on-scroll">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">R</div>
-            <div>
-              <div class="testimonial-name">Rizky M.</div>
-              <div class="testimonial-rating">★★★★☆</div>
-            </div>
-          </div>
-          <p class="testimonial-text">"Celana boardshortnya nyaman dipake santai di rumah atau keluar. Warna sesuai foto. Ukuran pas. Recommended seller!"</p>
-        </div>
+      <!-- Product Grid -->
+      <div class="product-grid" id="product-grid">
+        <!-- Rendered by JS -->
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════════
-       FAQ
-       ═══════════════════════════════════════════════ -->
-  <section id="faq">
-    <div class="section-header animate-on-scroll">
-      <h2>❓ Pertanyaan Umum</h2>
-      <p>Yang sering ditanyakan pelanggan kami</p>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        Bagaimana cara memesan?
-        <span class="faq-chevron">▼</span>
-      </button>
-      <div class="faq-answer">
-        <p>Pilih produk yang kamu mau, klik tombol <strong>"Pesan via WhatsApp"</strong>, isi form singkat (ukuran, jumlah, nama, alamat), lalu klik kirim. Pesananmu otomatis terkirim ke WhatsApp admin kami dan akan segera diproses!</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        Apakah bisa COD (Bayar di Tempat)?
-        <span class="faq-chevron">▼</span>
-      </button>
-      <div class="faq-answer">
-        <p>Ya, kami mendukung sistem COD untuk wilayah tertentu. Silakan konfirmasi ke admin via WhatsApp untuk mengecek ketersediaan COD di daerahmu.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        Berapa lama pengiriman?
-        <span class="faq-chevron">▼</span>
-      </button>
-      <div class="faq-answer">
-        <p>Pesanan diproses dalam 1-2 hari kerja. Estimasi pengiriman tergantung lokasi: <strong>Jawa 2-4 hari</strong>, <strong>Luar Jawa 4-7 hari</strong>. Kami menggunakan JNE, J&T, SiCepat, dan ekspedisi lainnya.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        Apakah warna bisa dipilih?
-        <span class="faq-chevron">▼</span>
-      </button>
-      <div class="faq-answer">
-        <p>Untuk paket bundling (3 pcs / 5 pcs), warna dikirim random/acak sesuai stok yang tersedia. Jika ada preferensi warna tertentu, silakan tulis di catatan saat memesan dan kami akan usahakan.</p>
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question">
-        Apakah ada garansi / bisa retur?
-        <span class="faq-chevron">▼</span>
-      </button>
-      <div class="faq-answer">
-        <p>Kami memberikan garansi tukar jika barang yang diterima cacat/rusak. Hubungi admin via WhatsApp dalam 2x24 jam setelah barang diterima disertai foto bukti. Kepuasan pelanggan adalah prioritas kami!</p>
+      <!-- Empty State -->
+      <div class="empty-state" id="empty-state" style="display: none;">
+        <i class="fa-solid fa-box-open"></i>
+        <h4>Produk Tidak Ditemukan</h4>
+        <p>Coba gunakan kata kunci lain seperti "broadshort", "joger", atau "kaos".</p>
+        <button class="btn-reset" onclick="resetSearch()">Lihat Semua Produk</button>
       </div>
     </div>
   </section>
@@ -318,63 +164,271 @@
   <footer id="footer">
     <div class="footer-container">
       <div class="footer-grid">
-        <div class="footer-brand">
-          <h3>🩳 GENERAL TRADER</h3>
-          <p>Toko online pakaian pria terpercaya sejak 2018. Spesialis celana boardshort & kaos kerja dengan harga grosir terbaik. Star Seller Shopee dengan 16.000+ pelanggan puas.</p>
+        <!-- Brand Info -->
+        <div>
+          <div class="footer-brand-logo">
+            <div class="footer-brand-icon">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <span class="footer-brand-name">GENERAL <span class="accent">TRADER</span></span>
+          </div>
+          <p class="footer-desc">
+            Pusat promo celana pendek, celana panjang, training, dan kaos tani termurah
+            langsung dari toko resmi Shopee. Nikmati promo paket isi banyak harga pabrik!
+          </p>
         </div>
 
-        <div class="footer-links">
-          <h4>Navigasi</h4>
-          <ul>
-            <li><a href="#hero">Beranda</a></li>
-            <li><a href="#catalog">Katalog Produk</a></li>
-            <li><a href="#testimonials">Testimoni</a></li>
-            <li><a href="#faq">FAQ</a></li>
+        <!-- Keunggulan -->
+        <div>
+          <h4 class="footer-col-title">Keunggulan Belanja</h4>
+          <ul class="footer-list">
+            <li><i class="fa-solid fa-circle-check"></i> Pembayaran Aman Via Shopee / COD</li>
+            <li><i class="fa-solid fa-circle-check"></i> Pengiriman Cepat Seluruh Indonesia</li>
+            <li><i class="fa-solid fa-circle-check"></i> Bahan Katun & Lotto Halus Berkualitas</li>
+            <li><i class="fa-solid fa-circle-check"></i> Paket Promo Hemat Isi 2 - 7 Pcs</li>
           </ul>
         </div>
 
-        <div class="footer-contact">
-          <h4>Hubungi Kami</h4>
-          <p>📱 <a href="https://wa.me/6281215934380" target="_blank">0812-1593-4380</a></p>
-          <p>🛒 <a href="https://shopee.co.id/general_trader" target="_blank">Shopee: @general_trader</a></p>
-          <p>⏰ Senin – Sabtu, 08:00 – 21:00 WIB</p>
+        <!-- Metode Pembayaran -->
+        <div>
+          <h4 class="footer-col-title">Metode Pembayaran Resmi</h4>
+          <div class="payment-methods">
+            <span class="payment-badge">
+              <i class="fa-solid fa-truck shopee-icon"></i> COD (Bayar di Tempat)
+            </span>
+            <span class="payment-badge">
+              <i class="fa-solid fa-wallet wallet-icon"></i> ShopeePay
+            </span>
+            <span class="payment-badge">
+              <i class="fa-solid fa-building-columns bank-icon"></i> Transfer Bank
+            </span>
+            <span class="payment-badge">
+              <i class="fa-solid fa-store store-icon"></i> Indomaret / Alfamart
+            </span>
+          </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        &copy; 2024 General Trader. All rights reserved. | Powered with ❤️
+        &copy; 2026 General Trader. All rights reserved. | Powered with ❤️
       </div>
     </div>
   </footer>
 
   <!-- ═══════════════════════════════════════════════
-       WHATSAPP ORDER MODAL
+       SCROLL TO TOP
        ═══════════════════════════════════════════════ -->
-  <div id="wa-modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>📦 Form Pemesanan</h3>
-        <button class="modal-close" onclick="closeModal()">✕</button>
+  <button id="scroll-top-btn" aria-label="Scroll ke atas">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- ═══════════════════════════════════════════════
+       ADMIN PANEL (Sidebar Kanan)
+       ═══════════════════════════════════════════════ -->
+  <div class="admin-overlay" id="admin-overlay"></div>
+
+  <aside class="admin-panel" id="admin-panel">
+    <div class="admin-header">
+      <h3><i class="fa-solid fa-gear"></i> Admin Manager</h3>
+      <button class="admin-close" id="admin-close" aria-label="Tutup Admin">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="admin-add-section">
+      <button class="btn-admin-add" id="btn-add-product">
+        <i class="fa-solid fa-plus"></i> Tambah Produk Baru
+      </button>
+    </div>
+
+    <div class="admin-product-list" id="admin-product-list">
+      <!-- Rendered by admin.js -->
+    </div>
+
+    <div class="admin-footer">
+      <div class="admin-status" id="admin-status">Tidak ada perubahan</div>
+      <div class="admin-footer-btns">
+        <button class="btn-export" id="btn-export">
+          <i class="fa-solid fa-clipboard"></i> Export Data
+        </button>
+        <button class="btn-reset-data" id="btn-reset-data">
+          <i class="fa-solid fa-rotate-left"></i> Reset Default
+        </button>
       </div>
-      <div id="modal-body"></div>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       ADMIN FORM MODAL (Add / Edit Product)
+       ═══════════════════════════════════════════════ -->
+  <div class="admin-form-overlay" id="admin-form-overlay">
+    <div class="admin-form-modal">
+      <div class="admin-form-header">
+        <h4 id="form-modal-title">Tambah Produk Baru</h4>
+        <button class="admin-close" id="form-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="product-form">
+        <div class="admin-form-body">
+          <div class="form-group">
+            <label for="f-title">Judul Produk <span class="req">*</span></label>
+            <input type="text" id="f-title" placeholder="Contoh: 40 Ribu Dapat 3 Pcs Broadshort..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-category">Kategori <span class="req">*</span></label>
+            <select id="f-category" required>
+              <option value="">— Pilih Kategori —</option>
+              <option value="pendek">🩳 Celana Pendek</option>
+              <option value="panjang">🏃 Celana Panjang & Training</option>
+              <option value="kaos">👕 Kaos Tani / Petani</option>
+              <option value="anak">👶 Pakaian Anak</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="f-price">Harga (teks) <span class="req">*</span></label>
+            <input type="text" id="f-price" placeholder="Contoh: Rp 40.000 atau Rp 12.500 - Rp 35.000" required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-badge">Badge Promo <span class="req">*</span></label>
+            <input type="text" id="f-badge" placeholder="Contoh: 3 PCS HANYA 40RB" required>
+            <p class="hint">Teks singkat yang muncul di overlay gambar</p>
+          </div>
+
+          <div class="form-group">
+            <label for="f-packageInfo">Info Isi Paket <span class="req">*</span></label>
+            <input type="text" id="f-packageInfo" placeholder="Contoh: Isi Paket: 3 Pcs Celana Broadshort Katun" required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-rating">Rating (1 - 5)</label>
+            <input type="number" id="f-rating" min="1" max="5" step="0.1" value="4.8">
+          </div>
+
+          <div class="form-group">
+            <label for="f-sold">Jumlah Terjual</label>
+            <input type="text" id="f-sold" placeholder="Contoh: 10rb+ Terjual">
+          </div>
+
+          <div class="form-group">
+            <label for="f-imageUrl">URL Gambar Shopee <span class="req">*</span></label>
+            <input type="text" id="f-imageUrl" placeholder="https://down-id.img.susercontent.com/file/..." required>
+            <p class="hint">Salin dari halaman produk Shopee (klik kanan gambar → Copy Image Address)</p>
+          </div>
+
+          <div class="form-group">
+            <label for="f-url">URL Link Produk Shopee <span class="req">*</span></label>
+            <input type="text" id="f-url" placeholder="https://shopee.co.id/..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="f-videoUrl">URL Video Review (Opsional)</label>
+            <input type="text" id="f-videoUrl" placeholder="https://down-tx-id.vod.susercontent.com/...mp4">
+            <p class="hint">Salin dari Shopee: klik kanan video → Copy Video Address. Kosongkan jika tidak ada video.</p>
+          </div>
+        </div>
+
+        <div class="admin-form-footer">
+          <button type="button" class="btn-form-cancel" id="form-cancel">Batal</button>
+          <button type="submit" class="btn-form-save" id="form-save">
+            <i class="fa-solid fa-check"></i> Simpan Produk
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════════════
-       FLOATING ELEMENTS
+       VIDEO REVIEW MODAL
        ═══════════════════════════════════════════════ -->
-  <a id="wa-float" href="https://wa.me/6281215934380?text=Halo%20Admin%20General%20Trader!%20Saya%20mau%20tanya%20produk..." target="_blank" aria-label="Chat WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.28-1.232l-.3-.178-3.108.923.923-3.108-.178-.3A8 8 0 1112 20z"/>
-    </svg>
-    <span class="tooltip">Chat Admin 💬</span>
-  </a>
+  <div class="video-modal-overlay" id="video-modal-overlay">
+    <div class="video-modal">
+      <!-- Close Button -->
+      <button class="video-modal-close" id="video-modal-close" aria-label="Tutup Video">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
-  <button id="scroll-top-btn" aria-label="Scroll ke atas">↑</button>
+      <div class="video-modal-body">
+        <!-- Video Player (Left/Top) -->
+        <div class="video-modal-player">
+          <video id="video-player"
+                 controls
+                 playsinline
+                 webkit-playsinline
+                 preload="metadata"
+                 muted>
+            <source id="video-source" src="" type="video/mp4">
+            Browser Anda tidak mendukung pemutar video.
+          </video>
+        </div>
 
-  <!-- Scripts -->
+        <!-- Product Info (Right/Bottom) -->
+        <div class="video-modal-info">
+          <div class="video-modal-meta">
+            <span class="video-modal-badge" id="video-modal-badge"></span>
+          </div>
+
+          <h3 class="video-modal-title" id="video-modal-title"></h3>
+
+          <div class="video-modal-rating">
+            <i class="fa-solid fa-star"></i>
+            <span id="video-modal-rating"></span>
+            <span class="video-modal-sold" id="video-modal-sold"></span>
+          </div>
+
+          <div class="video-modal-package" id="video-modal-package"></div>
+
+          <div class="video-modal-price">
+            <span class="video-price-label">Harga Promo Paket:</span>
+            <span class="video-price-value" id="video-modal-price"></span>
+          </div>
+
+          <a href="#" target="_blank" rel="noopener noreferrer" class="video-modal-cta" id="video-modal-cta">
+            <i class="fa-solid fa-bag-shopping"></i> Beli Langsung di Shopee
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       TOAST NOTIFICATION
+       ═══════════════════════════════════════════════ -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS (Order matters: data → logic → admin)
+       ═══════════════════════════════════════════════ -->
+  <script src="js/products.js"></script>
   <script src="js/app.js"></script>
+
+  <!-- Admin Manager: HANYA dimuat di localhost / file:// (Environment Lock) -->
+  <script>
+    (function() {
+      const host = window.location.hostname;
+      const protocol = window.location.protocol;
+      const isLocal = host === 'localhost'
+                   || host === '127.0.0.1'
+                   || host === ''
+                   || protocol === 'file:';
+
+      if (isLocal) {
+        const script = document.createElement('script');
+        script.src = 'js/admin.js';
+        document.body.appendChild(script);
+      } else {
+        // Sembunyikan elemen admin di production
+        const adminEls = document.querySelectorAll(
+          '#admin-panel, #admin-overlay, #admin-form-overlay'
+        );
+        adminEls.forEach(el => el.remove());
+      }
+    })();
+  </script>
 
 </body>
 </html>

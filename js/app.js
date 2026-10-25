@@ -1,530 +1,275 @@
-/* =====================================================
-   GENERAL TRADER — Landing Page App
-   Product Data + Filter + Search + WhatsApp Checkout
-   ===================================================== */
+/* ═══════════════════════════════════════════════════════════
+   GENERAL TRADER — V2 App Logic
+   Render Products + Category Filter + Live Search + Video Modal
+   ═══════════════════════════════════════════════════════════ */
 
-// ─── WhatsApp Config ───
-const WA_NUMBER = "6281215934380";
-
-// ─── Product Data (Extracted from Shopee Store) ───
-const PRODUCTS = [
-  {
-    id: 1,
-    name: "40 Ribu Dapat 3 Pcs Broadshort Pendek Casual Distro Santai Nyaman Katun",
-    price: 30951,
-    originalPrice: 93787,
-    discount: 67,
-    rating: 4.5,
-    sold: "10RB+",
-    category: "celana-pendek",
-    tags: ["terlaris", "paket-3pcs"],
-    image: "assets/img/product-1.jpg",
-    sizes: ["M", "L", "XL", "XXL"],
-    features: ["Bahan katun adem", "3 ukuran tersedia"]
-  },
-  {
-    id: 2,
-    name: "Paket Hemat 40 Rb Dapat 3 Pcs Boardshort Celana Pendek Pantai Boxer Pria Wanita",
-    price: 36000,
-    originalPrice: 124137,
-    discount: 71,
-    rating: 4.6,
-    sold: "2RB+",
-    category: "celana-pendek",
-    tags: ["paket-3pcs"],
-    image: "assets/img/product-2.jpg",
-    sizes: ["M", "L", "XL", "XXL"],
-    features: ["Ukuran pas!", "Warna ceria!"]
-  },
-  {
-    id: 3,
-    name: "Paket 3 Pcs Celana Pendek Pria Distro Boardshort Tali Karet Pinggang Santai Polos Original",
-    price: 36000,
-    originalPrice: 124137,
-    discount: 71,
-    rating: 4.6,
-    sold: "8RB+",
-    category: "celana-pendek",
-    tags: ["terlaris", "paket-3pcs"],
-    image: "assets/img/product-1.jpg",
-    sizes: ["M", "L", "XL", "XXL"],
-    features: ["Warna ceria acak!", "Tersedia 3 ukuran"]
-  },
-  {
-    id: 4,
-    name: "Paket 40 Rb Dapat 3 Celana Pendek Broadshort Pria Distro Short Pants",
-    price: 36000,
-    originalPrice: 124137,
-    discount: 71,
-    rating: 4.6,
-    sold: "2RB+",
-    category: "celana-pendek",
-    tags: ["paket-3pcs"],
-    image: "assets/img/product-3.jpg",
-    sizes: ["M", "L", "XL", "XXL"],
-    features: ["Tersedia 3 ukuran", "Nyaman dipakai!"]
-  },
-  {
-    id: 5,
-    name: "40 Ribu Dapat 3 Pcs Broadshort Pendek Casual Distro — Varian Warna Baru",
-    price: 34716,
-    originalPrice: 108487,
-    discount: 68,
-    rating: 4.5,
-    sold: "315",
-    category: "celana-pendek",
-    tags: ["paket-3pcs"],
-    image: "assets/img/product-2.jpg",
-    sizes: ["M", "L", "XL", "XXL"],
-    features: ["Bahan katun adem", "Tersedia 3 ukuran"]
-  },
-  {
-    id: 6,
-    name: "Paket 40 Rb Dapat 3 Celana Pendek Pria Boardshort Shortpants Pantai Distro Santai",
-    price: 41675,
-    originalPrice: 106859,
-    discount: 61,
-    rating: 4.7,
-    sold: "233",
-    category: "celana-pendek",
-    tags: ["paket-3pcs"],
-    image: "assets/img/product-1.jpg",
-    sizes: ["M", "L", "XL", "XXL"],
-    features: ["Warna random", "Tersedia 3 ukuran"]
-  },
-  {
-    id: 7,
-    name: "Paket 5 Pcs Celana Pendek Broadshort Pria Distro Short Pants Premium",
-    price: 78200,
-    originalPrice: 156400,
-    discount: 50,
-    rating: 4.5,
-    sold: "108",
-    category: "celana-pendek",
-    tags: ["paket-5pcs"],
-    image: "assets/img/product-2.jpg",
-    sizes: ["M", "L", "XL", "XXL"],
-    features: ["Bahan katun adem", "Pinggang elastis"]
-  },
-  {
-    id: 8,
-    name: "Celana Pendek Pria Katun Nyaman Dewasa Premium Quality",
-    price: 51000,
-    originalPrice: 127500,
-    discount: 60,
-    rating: 4.4,
-    sold: "89",
-    category: "celana-pendek",
-    tags: [],
-    image: "assets/img/product-3.jpg",
-    sizes: ["L", "XL", "XXL"],
-    features: ["Bahan katun premium", "Nyaman seharian"]
-  },
-  {
-    id: 9,
-    name: "Celana Pendek Boardshort Boxer Pantai Premium Pria Wanita Unisex",
-    price: 51000,
-    originalPrice: 127500,
-    discount: 60,
-    rating: 4.5,
-    sold: "76",
-    category: "celana-pendek",
-    tags: [],
-    image: "assets/img/product-2.jpg",
-    sizes: ["M", "L", "XL", "XXL"],
-    features: ["Unisex", "Cocok ke pantai"]
-  },
-  {
-    id: 10,
-    name: "Promo 5 Pcs Celana Pendek Unisex Termurah Celana Boxer Termurah",
-    price: 34200,
-    originalPrice: 68400,
-    discount: 50,
-    rating: 4.3,
-    sold: "54",
-    category: "celana-pendek",
-    tags: ["paket-5pcs"],
-    image: "assets/img/product-1.jpg",
-    sizes: ["M", "L", "XL"],
-    features: ["Harga termurah!", "Unisex"]
-  },
-  {
-    id: 11,
-    name: "5 Pcs Celana Pendek Pria Wanita Terbaru Populer All Size",
-    price: 34200,
-    originalPrice: 68400,
-    discount: 50,
-    rating: 4.4,
-    sold: "42",
-    category: "celana-pendek",
-    tags: ["paket-5pcs"],
-    image: "assets/img/product-2.jpg",
-    sizes: ["All Size"],
-    features: ["Terbaru!", "Populer"]
-  },
-  {
-    id: 12,
-    name: "Promo 5 Pcs Kaos Tani Kaos Basahan Kerja Lengan Panjang Kupluk Kaos Sawah Kebun",
-    price: 54120,
-    originalPrice: 131999,
-    discount: 59,
-    rating: 4.3,
-    sold: "632",
-    category: "kaos-kerja",
-    tags: ["terlaris", "paket-5pcs"],
-    image: "assets/img/product-4.jpg",
-    sizes: ["All Size"],
-    features: ["Desain stylish!", "Nyaman dipakai!"]
-  },
-  {
-    id: 13,
-    name: "100 Ribu 5 Pcs Kaos Basahan Kerja Lengan Panjang Untuk Ngarit Petani Sawah",
-    price: 83025,
-    originalPrice: 202499,
-    discount: 59,
-    rating: 4.4,
-    sold: "20",
-    category: "kaos-kerja",
-    tags: ["paket-5pcs"],
-    image: "assets/img/product-4.jpg",
-    sizes: ["All Size"],
-    features: ["Lengan panjang", "Motif menarik!"]
-  },
-  {
-    id: 14,
-    name: "Promo Terlaris 5 Pcs Kaos Tani Lengan Panjang Kupluk Anti Panas",
-    price: 54120,
-    originalPrice: 131999,
-    discount: 59,
-    rating: 4.6,
-    sold: "192",
-    category: "kaos-kerja",
-    tags: ["terlaris", "paket-5pcs"],
-    image: "assets/img/product-4.jpg",
-    sizes: ["All Size"],
-    features: ["Ideal untuk kerja", "Nyaman dipakai!"]
-  },
-  {
-    id: 15,
-    name: "Paket Hemat 5 Pcs Kaos Basahan Lengan Panjang Kaos Tani Kaos Kerja Proyek",
-    price: 79704,
-    originalPrice: 194399,
-    discount: 59,
-    rating: 4.4,
-    sold: "51",
-    category: "kaos-kerja",
-    tags: ["paket-5pcs"],
-    image: "assets/img/product-4.jpg",
-    sizes: ["All Size"],
-    features: ["Ideal untuk kerja", "Motif acak seru!"]
-  },
-  {
-    id: 16,
-    name: "Promo 100 Ribu Dapat 5 Pcs Kaos Basahan Kerja Lengan Panjang Kupluk",
-    price: 54120,
-    originalPrice: 131999,
-    discount: 59,
-    rating: 4.6,
-    sold: "21",
-    category: "kaos-kerja",
-    tags: ["paket-5pcs"],
-    image: "assets/img/product-4.jpg",
-    sizes: ["All Size"],
-    features: ["Anti panas", "Kupluk pelindung"]
-  },
-  {
-    id: 17,
-    name: "Terlaris 5 Pcs Kaos Basahan Kerja Motif Kata-Kata / Kaos Sawah Bertudung / Kaos Proyek",
-    price: 54120,
-    originalPrice: 131999,
-    discount: 59,
-    rating: 4.7,
-    sold: "71",
-    category: "kaos-kerja",
-    tags: ["terlaris", "paket-5pcs"],
-    image: "assets/img/product-4.jpg",
-    sizes: ["All Size"],
-    features: ["Motif sablon unik", "Bahan nyaman"]
-  },
-  {
-    id: 18,
-    name: "Paket 40 Rb Dapat 3 Celana Pendek Pria Distro Boardshort Nongkrong Santai",
-    price: 42840,
-    originalPrice: 107100,
-    discount: 60,
-    rating: 4.6,
-    sold: "1",
-    category: "celana-pendek",
-    tags: ["paket-3pcs"],
-    image: "assets/img/product-3.jpg",
-    sizes: ["M", "L", "XL", "XXL"],
-    features: ["Casual style", "Nyaman nongkrong"]
-  }
+// ─── Category Definitions ───
+const CATEGORIES = [
+  { key: "semua",   label: "Semua Promo",                icon: "" },
+  { key: "pendek",  label: "Celana Pendek",              icon: "fa-solid fa-shirt" },
+  { key: "panjang", label: "Celana Panjang & Training",  icon: "fa-solid fa-user-ninja" },
+  { key: "kaos",    label: "Kaos Tani / Petani",         icon: "fa-solid fa-vest" },
+  { key: "anak",    label: "Pakaian Anak",               icon: "fa-solid fa-child" }
 ];
 
 // ─── State ───
-let currentFilter = "semua";
-let currentSort = "populer";
+let activeCategory = "semua";
 let searchQuery = "";
 
-// ─── Utilities ───
-function formatRupiah(num) {
-  return "Rp" + num.toLocaleString("id-ID");
+
+// ─── Data Source ───
+// Returns products from localStorage (if admin edited) or default PRODUCTS
+function getProductData() {
+  const stored = localStorage.getItem("gt_products");
+
+  if (stored) {
+    try {
+      return JSON.parse(stored);
+    } catch (e) {
+      console.warn("Failed to parse stored products, using defaults.");
+      localStorage.removeItem("gt_products");
+    }
+  }
+
+  return PRODUCTS;
 }
 
-function renderStars(rating) {
-  const full = Math.floor(rating);
-  const half = rating % 1 >= 0.5 ? 1 : 0;
-  const empty = 5 - full - half;
 
-  return "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
+// ─── Count Products per Category ───
+function countByCategory(products, categoryKey) {
+  if (categoryKey === "semua") return products.length;
+
+  return products.filter(p => p.category === categoryKey).length;
 }
 
-function parseSold(soldStr) {
-  if (!soldStr) return 0;
-  const s = soldStr.toString().toUpperCase().replace(/\+/g, "");
 
-  if (s.includes("RB")) return parseFloat(s) * 1000;
+// ─── Render Filter Chips ───
+function renderFilterChips() {
+  const container = document.getElementById("filter-chips");
+  const products = getProductData();
 
-  return parseInt(s) || 0;
+  container.innerHTML = CATEGORIES.map(cat => {
+    const count = countByCategory(products, cat.key);
+    const isActive = activeCategory === cat.key ? "active" : "";
+    const iconHTML = cat.icon ? `<i class="${cat.icon}"></i> ` : "";
+
+    return `
+      <button class="filter-chip ${isActive}"
+              data-category="${cat.key}"
+              onclick="filterCategory('${cat.key}')">
+        ${iconHTML}${cat.label} (${count})
+      </button>
+    `;
+  }).join("");
 }
 
-// ─── Filtering & Sorting ───
+
+// ─── Filter & Search Logic ───
 function getFilteredProducts() {
-  let filtered = [...PRODUCTS];
+  let products = getProductData();
 
   // Category filter
-  if (currentFilter === "celana-pendek") {
-    filtered = filtered.filter(p => p.category === "celana-pendek");
-  } else if (currentFilter === "kaos-kerja") {
-    filtered = filtered.filter(p => p.category === "kaos-kerja");
-  } else if (currentFilter === "terlaris") {
-    filtered = filtered.filter(p => p.tags.includes("terlaris"));
+  if (activeCategory !== "semua") {
+    products = products.filter(p => p.category === activeCategory);
   }
 
   // Search filter
   if (searchQuery.trim()) {
     const q = searchQuery.toLowerCase();
-    filtered = filtered.filter(p =>
-      p.name.toLowerCase().includes(q) ||
-      p.features.some(f => f.toLowerCase().includes(q))
+
+    products = products.filter(p =>
+      p.title.toLowerCase().includes(q) ||
+      p.packageInfo.toLowerCase().includes(q) ||
+      p.badge.toLowerCase().includes(q)
     );
   }
 
-  // Sort
-  switch (currentSort) {
-    case "termurah":
-      filtered.sort((a, b) => a.price - b.price);
-      break;
-
-    case "termahal":
-      filtered.sort((a, b) => b.price - a.price);
-      break;
-
-    case "rating":
-      filtered.sort((a, b) => b.rating - a.rating);
-      break;
-
-    case "terlaris":
-      filtered.sort((a, b) => parseSold(b.sold) - parseSold(a.sold));
-      break;
-
-    default: // populer — use original order with terlaris first
-      filtered.sort((a, b) => {
-        const aBest = a.tags.includes("terlaris") ? 1 : 0;
-        const bBest = b.tags.includes("terlaris") ? 1 : 0;
-        return bBest - aBest || parseSold(b.sold) - parseSold(a.sold);
-      });
-  }
-
-  return filtered;
+  return products;
 }
+
 
 // ─── Render Product Cards ───
 function renderProducts() {
   const grid = document.getElementById("product-grid");
+  const emptyState = document.getElementById("empty-state");
+  const countEl = document.getElementById("product-count");
   const products = getFilteredProducts();
-  const countEl = document.getElementById("result-count");
+  const isAdmin = document.body.classList.contains("admin-active");
 
-  if (countEl) {
-    countEl.textContent = `${products.length} produk ditemukan`;
-  }
+  // Update count
+  countEl.textContent = `Menampilkan ${products.length} Produk`;
 
+  // Show/hide empty state
   if (products.length === 0) {
-    grid.innerHTML = `
-      <div class="empty-state">
-        <span class="empty-icon">🔍</span>
-        <h3>Produk tidak ditemukan</h3>
-        <p>Coba kata kunci lain atau ubah filter kategori.</p>
-      </div>
-    `;
+    grid.innerHTML = "";
+    emptyState.style.display = "block";
     return;
+  } else {
+    emptyState.style.display = "none";
   }
 
-  grid.innerHTML = products.map((p, idx) => `
-    <article class="product-card" data-id="${p.id}" style="animation-delay: ${idx * 0.05}s">
-      <div class="product-img-wrap">
-        <img src="${p.image}" alt="${p.name}" loading="lazy"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <div class="img-fallback" style="display:none;">🩳</div>
-        ${p.discount >= 60 ? `<span class="badge-discount">-${p.discount}%</span>` : ""}
-        ${p.tags.includes("terlaris") ? `<span class="badge-hot">🔥 TERLARIS</span>` : ""}
-      </div>
+  grid.innerHTML = products.map(p => {
+    const fallbackImg = `https://placehold.co/400x400/EE4D2D/ffffff?text=${encodeURIComponent(p.badge || "Produk")}`;
 
-      <div class="product-info">
-        <h3 class="product-title">${p.name}</h3>
+    // Video badge: only show if videoUrl is not empty
+    const hasVideo = p.videoUrl && p.videoUrl.trim() !== "";
 
-        <div class="product-tags">
-          ${p.features.map(f => `<span class="tag">${f}</span>`).join("")}
-        </div>
+    const videoBadge = hasVideo
+      ? `<span class="badge-video" onclick="openVideoModal(${p.id})" title="Tonton video review produk ini">
+           <i class="fa-solid fa-circle-play play-icon"></i> Review Shopee
+         </span>`
+      : "";
 
-        <div class="product-pricing">
-          <span class="price-now">${formatRupiah(p.price)}</span>
-          <span class="price-original">${formatRupiah(p.originalPrice)}</span>
-          <span class="price-discount">-${p.discount}%</span>
-        </div>
-
-        <div class="product-meta">
-          <span class="meta-rating">
-            <span class="stars">${renderStars(p.rating)}</span>
-            ${p.rating}
-          </span>
-          <span class="meta-sold">${p.sold} terjual</span>
-        </div>
-
-        <button class="btn-order" onclick="openOrderModal(${p.id})">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.28-1.232l-.3-.178-3.108.923.923-3.108-.178-.3A8 8 0 1112 20z"/>
-          </svg>
-          Pesan via WhatsApp
+    const adminButtons = `
+      <div class="admin-card-actions">
+        <button class="btn-admin-edit" onclick="editProduct(${p.id})" title="Edit Produk">
+          <i class="fa-solid fa-pen-to-square"></i> Edit
+        </button>
+        <button class="btn-admin-delete" onclick="deleteProduct(${p.id})" title="Hapus Produk">
+          <i class="fa-solid fa-trash-can"></i> Hapus
         </button>
       </div>
-    </article>
-  `).join("");
+    `;
+
+    return `
+      <article class="product-card" data-id="${p.id}">
+        <!-- Image -->
+        <div class="product-img-wrap">
+          <img src="${p.imageUrl}"
+               alt="${p.title}"
+               loading="lazy"
+               onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="img-fallback" style="display:none;">🩳</div>
+
+          <span class="badge-promo">
+            <i class="fa-solid fa-fire badge-icon"></i> ${p.badge}
+          </span>
+
+          ${videoBadge}
+        </div>
+
+        <!-- Content -->
+        <div class="product-info">
+          <!-- Rating & Sold -->
+          <div class="product-meta">
+            <div class="meta-rating">
+              <i class="fa-solid fa-star"></i>
+              <span class="rating-num">${p.rating}</span>
+            </div>
+            <span class="meta-sold">${p.sold}</span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="product-title" title="${p.title}">${p.title}</h3>
+
+          <!-- Package Info -->
+          <div class="package-info">
+            <p><i class="fa-solid fa-box-open"></i> ${p.packageInfo}</p>
+          </div>
+
+          <!-- Price -->
+          <div class="product-price">
+            <span class="price-label">Harga Promo Paket:</span>
+            <span class="price-value">${p.price}</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="product-cta">
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="btn-shopee">
+            <i class="fa-solid fa-bag-shopping"></i> Beli / Order Langsung di Shopee
+          </a>
+        </div>
+
+        <!-- Admin Actions (visible only in admin mode) -->
+        ${adminButtons}
+      </article>
+    `;
+  }).join("");
 }
 
-// ─── WhatsApp Order Modal ───
-function openOrderModal(productId) {
-  const product = PRODUCTS.find(p => p.id === productId);
-  if (!product) return;
 
-  const modal = document.getElementById("wa-modal");
-  const body = document.getElementById("modal-body");
+// ─── Video Modal ───
+function openVideoModal(productId) {
+  const products = getProductData();
+  const product = products.find(p => p.id === productId);
 
-  body.innerHTML = `
-    <div class="modal-product-preview">
-      <img src="${product.image}" alt="${product.name}"
-           onerror="this.style.display='none';">
-      <div>
-        <h4>${product.name}</h4>
-        <p class="modal-price">${formatRupiah(product.price)}
-          <span class="modal-original">${formatRupiah(product.originalPrice)}</span>
-        </p>
-      </div>
-    </div>
+  if (!product || !product.videoUrl) return;
 
-    <form id="order-form" onsubmit="submitOrder(event, ${product.id})">
-      <div class="form-group">
-        <label>Pilih Ukuran</label>
-        <div class="size-selector">
-          ${product.sizes.map((s, i) => `
-            <input type="radio" name="size" id="size-${s}" value="${s}" ${i === 0 ? "checked" : ""}>
-            <label for="size-${s}" class="size-chip">${s}</label>
-          `).join("")}
-        </div>
-      </div>
+  const overlay = document.getElementById("video-modal-overlay");
+  const video = document.getElementById("video-player");
+  const source = document.getElementById("video-source");
 
-      <div class="form-group">
-        <label for="qty">Jumlah</label>
-        <div class="qty-stepper">
-          <button type="button" class="qty-btn" onclick="changeQty(-1)">−</button>
-          <input type="number" id="qty" name="qty" value="1" min="1" max="99" readonly>
-          <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
-        </div>
-      </div>
+  // Set video source
+  source.src = product.videoUrl;
+  video.load();
 
-      <div class="form-group">
-        <label for="buyer-name">Nama Lengkap <span class="req">*</span></label>
-        <input type="text" id="buyer-name" name="name" placeholder="Masukkan nama lengkap" required>
-      </div>
+  // Populate product info
+  document.getElementById("video-modal-badge").textContent = product.badge;
+  document.getElementById("video-modal-title").textContent = product.title;
+  document.getElementById("video-modal-rating").textContent = product.rating;
+  document.getElementById("video-modal-sold").textContent = product.sold;
+  document.getElementById("video-modal-package").innerHTML =
+    `<i class="fa-solid fa-box-open"></i> ${product.packageInfo}`;
+  document.getElementById("video-modal-price").textContent = product.price;
 
-      <div class="form-group">
-        <label for="buyer-address">Alamat Pengiriman <span class="req">*</span></label>
-        <textarea id="buyer-address" name="address" rows="3" placeholder="Jl. Contoh No.123, Kec, Kota, Provinsi, Kode Pos" required></textarea>
-      </div>
+  // Set CTA link with dynamic price text
+  const ctaBtn = document.getElementById("video-modal-cta");
+  ctaBtn.href = product.url;
+  ctaBtn.innerHTML = `<i class="fa-solid fa-bag-shopping"></i> Beli Langsung di Shopee — ${product.price}`;
 
-      <div class="form-group">
-        <label for="buyer-notes">Catatan (opsional)</label>
-        <input type="text" id="buyer-notes" name="notes" placeholder="Warna favorit, request khusus, dll.">
-      </div>
-
-      <button type="submit" class="btn-submit-wa">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
-        </svg>
-        Kirim Pesanan via WhatsApp
-      </button>
-    </form>
-  `;
-
-  modal.classList.add("active");
+  // Show modal
+  overlay.classList.add("active");
   document.body.style.overflow = "hidden";
+
+  // Autoplay muted (browser-safe)
+  video.muted = true;
+  video.play().catch(() => {
+    // Autoplay blocked — user can manually press play
+  });
 }
 
-function closeModal() {
-  const modal = document.getElementById("wa-modal");
-  modal.classList.remove("active");
+function closeVideoModal() {
+  const overlay = document.getElementById("video-modal-overlay");
+  const video = document.getElementById("video-player");
+
+  // Stop video & reset
+  video.pause();
+  video.currentTime = 0;
+
+  // Hide modal
+  overlay.classList.remove("active");
   document.body.style.overflow = "";
 }
 
-function changeQty(delta) {
-  const input = document.getElementById("qty");
-  let val = parseInt(input.value) + delta;
 
-  if (val < 1) val = 1;
-  if (val > 99) val = 99;
+// ─── Category Filter ───
+function filterCategory(cat) {
+  activeCategory = cat;
 
-  input.value = val;
+  renderFilterChips();
+  renderProducts();
 }
 
-function submitOrder(event, productId) {
-  event.preventDefault();
 
-  const product = PRODUCTS.find(p => p.id === productId);
-  if (!product) return;
+// ─── Search ───
+function triggerSearch() {
+  const input = document.getElementById("search-input");
+  searchQuery = input.value;
 
-  const form = event.target;
-  const size = form.size.value;
-  const qty = form.qty.value;
-  const name = form.name.value.trim();
-  const address = form.address.value.trim();
-  const notes = form.notes.value.trim();
-  const total = product.price * parseInt(qty);
-
-  const message = `Halo Admin General Trader! 👋
-
-Saya ingin memesan:
-━━━━━━━━━━━━━━━
-📦 *${product.name}*
-📏 Ukuran: ${size}
-🔢 Jumlah: ${qty} pcs
-💰 Harga: ${formatRupiah(product.price)} × ${qty} = *${formatRupiah(total)}*
-━━━━━━━━━━━━━━━
-
-👤 Nama: ${name}
-📍 Alamat: ${address}
-${notes ? `📝 Catatan: ${notes}` : ""}
-
-Mohon konfirmasi ketersediaan dan info ongkirnya ya. Terima kasih! 🙏`;
-
-  const encodedMsg = encodeURIComponent(message);
-  const waURL = `https://wa.me/${WA_NUMBER}?text=${encodedMsg}`;
-
-  window.open(waURL, "_blank");
-  closeModal();
+  renderProducts();
 }
+
+function resetSearch() {
+  const input = document.getElementById("search-input");
+  input.value = "";
+  searchQuery = "";
+  activeCategory = "semua";
+
+  renderFilterChips();
+  renderProducts();
+}
+
 
 // ─── Event Handlers ───
 function initEventHandlers() {
@@ -547,27 +292,7 @@ function initEventHandlers() {
     });
   }
 
-  // Category filter chips
-  document.querySelectorAll(".filter-chip").forEach(chip => {
-    chip.addEventListener("click", () => {
-      document.querySelector(".filter-chip.active").classList.remove("active");
-      chip.classList.add("active");
-      currentFilter = chip.dataset.filter;
-      renderProducts();
-    });
-  });
-
-  // Sort dropdown
-  const sortSelect = document.getElementById("sort-select");
-
-  if (sortSelect) {
-    sortSelect.addEventListener("change", (e) => {
-      currentSort = e.target.value;
-      renderProducts();
-    });
-  }
-
-  // Search input
+  // Search input — live search with debounce
   const searchInput = document.getElementById("search-input");
 
   if (searchInput) {
@@ -575,145 +300,85 @@ function initEventHandlers() {
 
     searchInput.addEventListener("input", (e) => {
       clearTimeout(debounceTimer);
+
       debounceTimer = setTimeout(() => {
         searchQuery = e.target.value;
         renderProducts();
       }, 250);
     });
-  }
 
-  // Modal backdrop close
-  const modal = document.getElementById("wa-modal");
-
-  if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
+    // Enter key triggers search
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        triggerSearch();
+      }
     });
   }
 
-  // ESC to close modal
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeModal();
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", (e) => {
+      const targetId = a.getAttribute("href");
+
+      if (targetId !== "#") {
+        e.preventDefault();
+        const target = document.querySelector(targetId);
+
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
   });
 
-  // Navbar scroll effect
-  const navbar = document.getElementById("navbar");
-  let lastScroll = 0;
-
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-
-    if (navbar) {
-      navbar.classList.toggle("scrolled", scrollY > 50);
-    }
-
-    // Show/hide scroll-to-top
-    const scrollBtn = document.getElementById("scroll-top-btn");
-
-    if (scrollBtn) {
-      scrollBtn.classList.toggle("visible", scrollY > 600);
-    }
-
-    lastScroll = scrollY;
-  });
-
-  // Scroll-to-top button
+  // Scroll to top button
   const scrollBtn = document.getElementById("scroll-top-btn");
 
   if (scrollBtn) {
+    window.addEventListener("scroll", () => {
+      scrollBtn.classList.toggle("visible", window.scrollY > 500);
+    });
+
     scrollBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-  // FAQ accordion
-  document.querySelectorAll(".faq-question").forEach(q => {
-    q.addEventListener("click", () => {
-      const item = q.parentElement;
-      const wasActive = item.classList.contains("active");
+  // ─── Video Modal Events ───
+  const videoOverlay = document.getElementById("video-modal-overlay");
+  const videoCloseBtn = document.getElementById("video-modal-close");
 
-      // Close all others
-      document.querySelectorAll(".faq-item.active").forEach(i => i.classList.remove("active"));
+  // Close button
+  if (videoCloseBtn) {
+    videoCloseBtn.addEventListener("click", closeVideoModal);
+  }
 
-      if (!wasActive) {
-        item.classList.add("active");
+  // Click outside modal to close
+  if (videoOverlay) {
+    videoOverlay.addEventListener("click", (e) => {
+      if (e.target === videoOverlay) {
+        closeVideoModal();
       }
     });
-  });
-
-  // Announcement bar close
-  const announcementClose = document.getElementById("announcement-close");
-
-  if (announcementClose) {
-    announcementClose.addEventListener("click", () => {
-      const bar = document.getElementById("announcement-bar");
-      bar.style.transform = "translateY(-100%)";
-      bar.style.marginBottom = `-${bar.offsetHeight}px`;
-
-      setTimeout(() => { bar.style.display = "none"; }, 300);
-    });
   }
 
-  // CTA scroll to catalog
-  document.querySelectorAll('a[href="#catalog"]').forEach(a => {
-    a.addEventListener("click", (e) => {
-      e.preventDefault();
-      document.getElementById("catalog").scrollIntoView({ behavior: "smooth" });
-    });
-  });
-}
+  // ESC key closes video modal (with priority over other modals)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const videoModalOverlay = document.getElementById("video-modal-overlay");
 
-// ─── Intersection Observer for Animations ───
-function initScrollAnimations() {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-in");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-  );
-
-  document.querySelectorAll(".animate-on-scroll").forEach(el => {
-    observer.observe(el);
-  });
-}
-
-// ─── Countdown Timer (Promo ends in 24h from page load) ───
-function initCountdown() {
-  const endTime = new Date().getTime() + 24 * 60 * 60 * 1000;
-  const timerEl = document.getElementById("countdown-timer");
-
-  if (!timerEl) return;
-
-  function update() {
-    const now = new Date().getTime();
-    const diff = endTime - now;
-
-    if (diff <= 0) {
-      timerEl.textContent = "PROMO BERAKHIR!";
-      return;
+      if (videoModalOverlay && videoModalOverlay.classList.contains("active")) {
+        closeVideoModal();
+      }
     }
-
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-    timerEl.textContent =
-      `${String(hours).padStart(2, "0")}:${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-  }
-
-  update();
-  setInterval(update, 1000);
+  });
 }
+
 
 // ─── Initialize ───
 document.addEventListener("DOMContentLoaded", () => {
+  renderFilterChips();
   renderProducts();
   initEventHandlers();
-  initScrollAnimations();
-  initCountdown();
 });
